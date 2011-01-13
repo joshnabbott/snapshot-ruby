@@ -4,6 +4,12 @@ module Snapshot
   class Connection
     attr_accessor :access_key, :domain, :secret_key
     
+    # Creates a new Connection object.
+    #
+    # ==== Parameters
+    #
+    # * +opts+ - (optional) String or Hash 
+    #
     def initialize(opts={})
       if opts.is_a?(Hash)
         opts.each do |m,v|
@@ -16,6 +22,8 @@ module Snapshot
       end
     end
     
+    # Returns an authenticated RestClient::Resource
+    # 
     def resource
       @resource ||= RestClient::Resource.new(self.url, {
         :user => self.access_key,
@@ -23,6 +31,8 @@ module Snapshot
       })
     end
     
+    # Returns a URL to Snapshot for the connection
+    #
     def url
       "http://#{domain}/"
     end
