@@ -12,6 +12,7 @@ module Snapshot
         info = JSON.parse(result)['file']
         
         self.new.tap do |img|
+          img.created_at = Time.at(info['uploaded_at'].to_i)
           img.filesize = info['size'].to_i
           img.format = info['type']
           img.height = info['height'].to_i
@@ -25,6 +26,7 @@ module Snapshot
         info = JSON.parse(result)
         
         self.new.tap do |img|
+          img.created_at = Time.at(info['uploaded_at'].to_i)
           img.filesize = info['size'].to_i
           img.format = info['type']
           img.height = info['height'].to_i
