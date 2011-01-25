@@ -5,7 +5,7 @@ require 'snapshot/version'
  
 Gem::Specification.new do |s|
   s.name        = 'snapshot'
-  s.version     = Bundler::VERSION
+  s.version     = Snapshot::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ['Jeremy Boles']
   s.email       = ['jeremy@jeremyboles.com']
