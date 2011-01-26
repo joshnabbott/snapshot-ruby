@@ -9,7 +9,7 @@ The Snapshot gem provides an nice, ActiveRecord-ish interface to the
 Installation
 ------------
 
-    gem install snapshot-rb
+    gem install snapshot-ruby
 
 Using the gem
 -------------

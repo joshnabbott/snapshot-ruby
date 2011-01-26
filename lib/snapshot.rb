@@ -1,5 +1,7 @@
 require 'snapshot/connection'
 require 'snapshot/image'
+require 'snapshot/url'
+require 'snapshot/version'
 
 module Snapshot
   extend self
@@ -44,17 +46,10 @@ module Snapshot
   # ==== Examples
   #
   #   # Using a String:
-  #   Snapshot.configure('http://access_key:secret_ket@subdomain.snapshothq.com/')
+  #   Snapshot.connect!('http://access_key:secret_ket@subdomain.snapshothq.com/')
   #
   #   # Using a Hash:
-  #   Snapshot.configure(:access_key => 'access_key', :domain => 'subdomain.snapshothq.com', :secret_key => 'secret_key')
-  #
-  #   # Using a block:
-  #   Snapshot.configure do |config|
-  #     config.access_key = 'access_key'
-  #     config.domain = 'subdomain.snapshothq.com'
-  #     config.secret_key = 'secret_key
-  #   end
+  #   Snapshot.connect!(:access_key => 'access_key', :domain => 'subdomain.snapshothq.com', :secret_key => 'secret_key')
   #
   def connect!(opts=nil)
     opts = ENV['SNAPSHOT_URL'] if opts.nil?
@@ -67,5 +62,10 @@ module Snapshot
   def connection
     raise 'Not connected. Please connect! first.' unless @connection
     @connection
+  end
+  
+  # Terminates the connection to Snapshot
+  def disconnect!
+    @connection = nil
   end
 end

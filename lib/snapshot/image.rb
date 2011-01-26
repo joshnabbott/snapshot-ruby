@@ -84,8 +84,8 @@ module Snapshot
     #   img = Snapshot::Image.find('a45af9b9e6ebab9c685faef4e72e7a14f3e24e1a')
     #   img.url # => http://subdomain.snapshothq.com/a45af9b9e6ebab9c685faef4e72e7a14f3e24e1a.jpg
     #
-    def url
-      Snapshot.connection.url << id << extension
+    def url(&block)
+      Snapshot::URL.new(id, extension, &block)
     end
   
   private
