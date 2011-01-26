@@ -36,6 +36,20 @@ module Snapshot
         end
       end
       
+      # Deletes a file from Snapshot.
+      #
+      # ==== Parameters
+      #
+      # * +id+ - The ID of the image
+      #
+      # ==== Examples
+      #
+      #   Snapshot::Image.destroy('a45af9b9e6ebab9c685faef4e72e7a14f3e24e1a')
+      #
+      def destroy(id)
+        find(id).destroy
+      end
+      
       # Finds a file on the connected Snapshot account.
       #
       # ==== Parameters

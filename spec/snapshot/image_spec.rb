@@ -8,6 +8,4 @@ describe Snapshot::Image do
   after do
     Snapshot.disconnect!
   end
-  
-  
 end
