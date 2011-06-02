@@ -28,7 +28,7 @@ module Snapshot
   #     config.secret_key = 'secret_key
   #   end
   #
-  def configure(opts={})
+  def configure(opts=false)
     if opts
       connect!(opts)
     else
