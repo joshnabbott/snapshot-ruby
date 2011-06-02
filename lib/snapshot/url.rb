@@ -9,8 +9,8 @@ module Snapshot
       tap(&block) if block_given?
     end
     
-    def method_missing(process, *options)
-      @options << [process.to_s, options]
+    def method_missing(processor, *options)
+      @options << [processor.to_s, options]
     end
     
     def to_s
