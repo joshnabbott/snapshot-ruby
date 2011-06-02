@@ -3,7 +3,11 @@ require 'rest_client'
 
 module Snapshot
   class Image
-    attr_accessor :created_at, :filesize, :format, :height, :id, :width
+    attr_accessor :filesize, :format, :height, :id, :last_accessed_at,
+                  :uploaded_at, :width
+    
+    # To make it more ActiveRecord like
+    alias_method :created_at, :uploaded_at
     
     class << self
       # Uploads a file to the connected Snapshot account. 
@@ -27,11 +31,11 @@ module Snapshot
         info = JSON.parse(result)['file']
         
         self.new.tap do |img|
-          img.created_at = Time.at(info['uploaded_at'].to_i)
           img.filesize = info['size'].to_i
           img.format = info['type']
           img.height = info['height'].to_i
           img.id = info['id']
+          img.uploaded_at = Time.at(info['uploaded_at'].to_i)
           img.width = info['width'].to_i
         end
       end
@@ -65,11 +69,12 @@ module Snapshot
         info = JSON.parse(result)
         
         self.new.tap do |img|
-          img.created_at = Time.at(info['uploaded_at'].to_i)
           img.filesize = info['size'].to_i
           img.format = info['type']
           img.height = info['height'].to_i
           img.id = info['id']
+          img.last_accessed_at = Time.at(info['last_accessed_at'].to_i)
+          img.uploaded_at = Time.at(info['uploaded_at'].to_i)
           img.width = info['width'].to_i
         end
       rescue RestClient::ResourceNotFound

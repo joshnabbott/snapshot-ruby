@@ -4,7 +4,7 @@ $:.unshift lib unless $:.include?(lib)
 require 'snapshot/version'
  
 Gem::Specification.new do |s|
-  s.name        = 'snapshot'
+  s.name        = 'snapshot-ruby'
   s.version     = Snapshot::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ['Jeremy Boles']
