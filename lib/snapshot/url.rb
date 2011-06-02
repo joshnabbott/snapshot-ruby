@@ -14,9 +14,9 @@ module Snapshot
     end
     
     def to_s
-      @options = @options.flatten
-      @options << '' unless @options.empty?
-      Snapshot.connection.url << @options.join('/') << id << '.' << extension
+      options = @options.flatten
+      options << '' unless options.empty?
+      "#{Snapshot.connection.url}#{options.join('/')}#{id}.#{extension}"
     end
   end
 end

@@ -111,8 +111,8 @@ module Snapshot
   
     def extension
       case self.format
-        when 'JPEG' then '.jpg'
-        when 'PNG' then '.png'
+        when 'JPEG' then 'jpg'
+        when 'PNG' then 'png'
       end
     end
     
