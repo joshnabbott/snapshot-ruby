@@ -16,8 +16,8 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = '>= 1.3.7'
   s.rubyforge_project         = 'snapshot-ruby'
   
-  s.add_dependency 'json', '1.4.6'
-  s.add_dependency 'rest-client', '1.6.1'
+  s.add_dependency 'json', '1.6.5'
+  s.add_dependency 'rest-client', '1.6.7'
   
   s.add_development_dependency 'fakeweb', '1.3'
   s.add_development_dependency 'rspec', '2.4.0'
